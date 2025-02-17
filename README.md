@@ -6,6 +6,19 @@ Aclaraciones del proyecto:
 
 ![image](https://github.com/user-attachments/assets/84eed1e4-9f36-46d6-8207-78387313379d)
 
+## Respuestas Laboratorio 3:
+
+### Uso de ! Important en css:
+Su uso debe ser limitado y solo en casos donde realmente sea necesario sobrescribir estilos específicos. Abusar de !important dificulta el mantenimiento del código, ya que puede hacer que los estilos sean difíciles de depurar y modificar. 
+
+### Imagen de fondo en una página HTML:
+El uso de una imagen de fondo puede comprometer el rendimiento de la paguina y el diseño de la misma
+
+### Elección de unidades en CSS (%, p x, p t):
+En general los tres tienen limitaciones y ventajas. Más encuentro que el mejor es el %, ya que encuentro que es el más útil para elementos responsivos y escalables, ya que se ajusta en función del contenedor padre
+
+### Beneficios del uso de CSS minimizado:
+Razón: Minimizar el CSS elimina espacios, comentarios y caracteres innecesarios, reduciendo el tamaño del archivo. Esto mejora el rendimiento del sitio al disminuir los tiempos de carga y el uso de ancho de banda, lo que resulta en una mejor experiencia para el usuario.Ss
 
 ## Respuestas Laboratorio 1:
 
