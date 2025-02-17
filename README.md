@@ -80,13 +80,13 @@ En este caso la culpa recae enteramente en el desarrollador, ya que implica que 
 
 ### Diferencias entre HTML 4 y HTML5:
 
-HTML5 introduce nuevas etiquetas semánticas (<article>, <section>, <nav>).
+HTML5 introduce nuevas etiquetas semánticas (article, section, nav).
 
 
-Soporte nativo para audio y video (<audio>, <video>).
+Soporte nativo para audio y video (audio, video).
 
 
-Eliminación de elementos obsoletos como <font> y <frameset>.
+Eliminación de elementos obsoletos como font y frameset.
 
 
 Mejora en el manejo de formularios con nuevos tipos de entrada.
