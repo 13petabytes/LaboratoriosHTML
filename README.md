@@ -1,1 +1,1 @@
-# Loboratorios y Prectica de Github
+# Loboratorios y Practica de Github
