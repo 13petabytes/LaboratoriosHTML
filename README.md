@@ -2,7 +2,7 @@
 
 Aclaraciones del proyecto:
 -El comit que corresponde a la última versión de un laboratorio lleva el número del mismo y el número de corrección que se hizo, el número más alto el la última versión 
--El link para ver la paguina es https://13petabytes.github.io/LaboratoriosHTML/index.html
+-El link para ver la paguina es https://13petabytes.github.io/LaboratoriosHTML/‌index.html
 
 ![image](https://github.com/user-attachments/assets/84eed1e4-9f36-46d6-8207-78387313379d)
 
