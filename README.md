@@ -94,12 +94,12 @@ Mejora en el manejo de formularios con nuevos tipos de entrada.
 
 ### Componentes de una tabla HTML:
 
-<table>, <tr> (filas), <td> (celdas), <th> (encabezados), <thead>, <tbody>, <tfoot>, <caption>.
+table, tr (filas), td (celdas), th (encabezados), thead, tbody, tfoot, caption.
 
 
 ### Principales controles de una forma HTML5:
 
-<input> (text, email, number, date, etc.), <textarea>, <select>, <button>, <datalist>, <fieldset>, <legend>.
+input (text, email, number, date, etc.), textarea, select, button, datalist, fieldset, legend.
 
 
 ### Soporte HTML5 en tu navegador:
