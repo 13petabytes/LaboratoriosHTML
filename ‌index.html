@@ -1,37 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Laboratorios</title>
         <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <header>
-            <h1><strong>Laboratorio 3</strong></h1>
+            <h1><strong>Laboratorio 4</strong></h1>
         </header>
 
         <div class="container">
             <img src="Constantin_Valdor.jpg" alt="Constantin_V">
             <div class="texto-laboratorio">
-                <h2>Respuestas Laboratorio 3:</h2>
-        
-                <h3>Uso de !important en CSS:</h3>
-                <p>Su uso debe ser limitado y solo en casos donde realmente sea necesario sobrescribir estilos específicos. Abusar de !important dificulta el mantenimiento del código, ya que puede hacer que los estilos sean difíciles de depurar y modificar.</p>
-        
-                <h3>Imagen de fondo en una página HTML:</h3>
-                <p>El uso de una imagen de fondo puede comprometer el rendimiento de la página y el diseño de la misma.</p>
-        
-                <h3>Elección de unidades en CSS (%, px, pt):</h3>
-                <p>En general los tres tienen limitaciones y ventajas. Más encuentro que el mejor es el %, ya que encuentro que es el más útil para elementos responsivos y escalables, ya que se ajusta en función del contenedor padre.</p>
-        
-                <h3>Beneficios del uso de CSS minimizado:</h3>
-                <p>Minimizar el CSS elimina espacios, comentarios y caracteres innecesarios, reduciendo el tamaño del archivo. Esto mejora el rendimiento del sitio al disminuir los tiempos de carga y el uso de ancho de banda, lo que resulta en una mejor experiencia para el usuario.</p>
+                <h2>Respuestas Laboratorio 4:</h2>
+
+                <h3>Diferencias y semejanzas entre Java y JavaScript:</h3>
+                <p>Como semejanzas tienen sus sintanxis, uso de llaves if, for, etc, y su uso en desarrollo web.</p>
+                <p>Como diferencias tienen su paradigma, Java esta muy orientado al uso de objetos, mientras que JavaScript es más flexible, Java de ejecuta en JVM y JavaScript en navegadores Web y por ultimo, si bien tiene semejanzas en la sintaxis, la misma presenta diferencias.</p>
+                
+                <h3>Métodos del objeto Date:</h3>
+                <p>getFullYear() → Devuelve el año en formato de 4 dígitos.</p>
+                <p>getMonth() → Devuelve el mes (0 para enero, 11 para diciembre).</p>
+                <p>getDate() → Devuelve el día del mes (1-31).</p>
+                <p>getDay() → Devuelve el día de la semana (0 para domingo, 6 para sábado).</p>
+                <P>getHours() → Devuelve la hora actual (0-23).</P>
+
+                <h3>Métodos de los arreglos en JavaScript:</h3>
+                <p>push(elemento) → Agrega un elemento al final del arreglo.</p>
+                <p>pop() → Elimina el último elemento del arreglo.</p>
+                <p>shift() → Elimina el primer elemento del arreglo.</p>
+                <p>unshift(elemento) → Agrega un elemento al inicio del arreglo.</p>
+                <P>map(función) → Crea un nuevo arreglo aplicando una función a cada elemento.</P>
+
+                <h3>Declaración de una variable con alcance local dentro de una función:</h3>
+                <p>Se emplea "let" o "const" como parametro para la variable</p>
+
+                <h3>Implicaciones de usar variables globales dentro de funciones:</h3>
+                <p>El uso execivod e variabes globales puede causar problemas a la hroa de diceñar el programa, ya que multiples funciones estarian modificando una sola variable, difucultando la depuración, aunado a los problemas de rendimiento que genera.</p>
+                
+                <H2>Sexta Función Explicada</H2>
+                <p>Yugioh es un juego de cartas, el cual tiene un formato virtual llamado Yugioh DUEL Links. Mi arquetipo de cartas favorito para este formato es el de Thunder dragon y la manera que me gusta de jugarlo es jugando a vajar mounstruos syncro del extradeck, el promblema es que el arquetipo depender de un soporte externo en forma de un mountruo cantante para esto, ya que el jeugo agrea nuevas cartas cada poco tiempo. Pero me cuesta llevar el reguistro de cual es el mejor soporte. Esta función plantea el llevar un reguistro de cual es el mejor actualmente.</p>
             </div>
         </div>
 
         <p class="texto">La imagen de arriba es de Constantin Valdor, el primero de los 10,000.  
             Para más información, visite el siguiente <a href="https://www.youtube.com/watch?v=UwB-pJUrN3I" target="_blank">link</a>.
         </p>
+
+        <!-- Sección de la tabla de cuadrados y cubos -->
+        <h4>Tabla de cuadrados y cubos</h4>
+        <button onclick="generarTabla()">Generar Tabla</button>
+        <div id="resultado" style="margin-top: 10px;"></div>
+
+        <!-- Sección del juego de suma -->
+        <h4>Función dos</h4>
+        <button onclick="correctoIncorrecto()">Iniciar Juego</button>
+        <div id="resultado2" style="margin-top: 10px;"></div>
+
+        <!-- Sección de la función contar -->
+        <h4>Función contar</h4>
+        <button onclick="preContador()">Probar Contador</button>
+        <div id="resultado3" style="margin-top: 10px;"></div>
+
+        <!-- Sección de la función promedio-->
+        <h4>Función promedio</h4>
+        <button onclick="prePromedio()">Sacar Promedio</button>
+        <div id="resultado4" style="margin-top: 10px;"></div>
+
+        <!-- Sección de la función invertir-->
+        <h4>Función invertir</h4>
+        <button onclick="invertir()">Invertir Numero</button>
+        <div id="resultado5" style="margin-top: 10px;"></div>
+
+        <!-- Sección de la función invertir-->
+        <h4>Función invertir</h4>
+        <button onclick="invertir()">Invertir Numero</button>
+        <div id="resultado5" style="margin-top: 10px;"></div>
+
+        <!-- Sección de la función del insiso 6-->
+        <h4>Mejor Tuner para Thunder dragon</h4>
+        <button onclick="soporteThunder.veroportenombreyconseguir()">Mostrar Datos</button>
+        <div id="resultado7" style="margin-top: 10px;"></div>
+        <button onclick="soporteThunder.modsoportenombre()">Modificar Nombre</button>
+        <div id="resultado6" style="margin-top: 10px;"></div>
+        <button onclick="soporteThunder.modconseguir()">Modificar donde se obtiene</button>
+        <div id="resultado8" style="margin-top: 10px;"></div>
+        <script src="script.js"></script>
 
         <footer>
             <p class="foot">Realizado por Fermín Nieto, A01707069</p>
