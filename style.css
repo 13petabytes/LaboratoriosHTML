@@ -1,4 +1,71 @@
-footer,header{font-family:"Grenze Gotisch",serif;background-color:#000;color:#fff;padding:10px;text-align:center}
-.texto{font-family:"Grenze Gotisch",serif;font-weight:500;font-style:normal}header{font-weight:700}
-.container{display:flex;align-items:flex-start}img{margin-right:20px}.texto-laboratorio{max-width:60%;text-align:left}
+@import 'node_modules/modern-normalize/modern-normalize.css';
 
+html {
+	font-family:
+		system-ui,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+	tab-size: 4;
+}
+
+h4{
+	margin: 10px
+}
+small {
+	font-size: 80%;
+}
+
+button {
+	font-family: inherit;
+	font-size: 90%;
+	line-height: 1.15;
+	margin: 10px;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+footer,
+header {
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+header {
+	font-weight: 700;
+}
+
+.texto {
+	font-weight: 500;
+	font-style: normal;
+}
+
+.preguntas {
+	display: flex;
+	align-items: flex-start;
+	gap: 20px;
+	padding: 20px;
+}
+
+.preguntas img {
+	border-radius: 10px;
+}
+
+.texto-laboratorio {
+	max-width: 60%;
+	text-align: left;
+}
+
+body {
+	margin: 0;
+  }
