@@ -1,0 +1,20 @@
+{
+  "name": "practica_github",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13petabytes/Practica_Github.git"
+  },
+  "keywords": [],
+  "author": "Fermin Nieto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/13petabytes/Practica_Github/issues"
+  },
+  "homepage": "https://github.com/13petabytes/Practica_Github#readme"
+}
