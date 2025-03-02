@@ -1,20 +1,16 @@
 {
   "name": "practica_github",
   "version": "1.0.0",
-  "description": "",
-  "main": "script.js",
+  "description": "Laboratorio11",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/13petabytes/Practica_Github.git"
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
   },
-  "keywords": [],
-  "author": "Fermin Nieto",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/13petabytes/Practica_Github/issues"
-  },
-  "homepage": "https://github.com/13petabytes/Practica_Github#readme"
+  "devDependencies": {
+    "anymatch": "^3.1.3"
+  }
 }
