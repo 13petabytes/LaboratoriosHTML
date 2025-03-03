@@ -5,6 +5,7 @@ const bodyParser = require('body-parser'); // Usamos body-parser para manejar fo
 
 const app = express();
 
+
 // Usamos middleware para procesar datos del cuerpo de la solicitud (formulario)
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -13,9 +14,6 @@ const misRutas = require('./rutas');
 
 // Servir archivos estáticos (CSS, imágenes, JS) desde la raíz del proyecto
 app.use(express.static(__dirname));
-
-// Usamos las rutas definidas en rutas.js
-app.use(misRutas);
 
 //  Ruta para procesar formulario y guardar datos en datos.yxy
 app.post('/submit', function(req, res) {
@@ -30,6 +28,11 @@ app.post('/submit', function(req, res) {
         }
     });
 });
+
+// Usamos las rutas definidas en rutas.js
+app.use(misRutas);
+
+
 
 // Configuración del servidor
 app.listen(3000, function () {
