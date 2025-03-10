@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regreso al Laboratorio 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style_lab5.css">
+    <script src="script_lab5.js" defer></script>
+</head>
+<body>
+
+    <%- include('includes/head') %>  <!-- Se incluye el header -->
+
+    <div class="preguntas">
+        <img src="Constantin_Valdor.jpg" alt="Constantin_V">
+        
+        <div class="texto-laboratorio">
+            <h2><strong>¿Qué otros templating engines existen para node?</strong></h2>
+
+            <h3>Pug (antes Jade) – Sintaxis concisa e indentada, ideal para escribir HTML de forma estructurada.</h3>
+            <h3>📌 Instalación: npm install pug</h3>
+            
+            <h3>Handlebars – Similar a Mustache, pero con helpers y lógica más avanzada.</h3>
+            <h3>📌 Instalación: npm install express-handlebars</h3>
+            
+            <h3>Mustache – Sintaxis minimalista, sin lógica de programación.</h3>
+            <h3>📌 Instalación: npm install mustache</h3>
+            
+            <h3>Nunjucks – De Mozilla, con herencia de plantillas y extensibilidad.</h3>
+            <h3>📌 Instalación: npm install nunjucks</h3>
+            
+            <h3>Dust.js – De LinkedIn, optimizado para rendimiento y asíncrono.</h3>
+            <h3>📌 Instalación: npm install dustjs-linkedin</h3>
+            
+            <h3>Marko – De eBay, pensado para alto rendimiento y Server-Side Rendering (SSR).</h3>
+            <h3>📌 Instalación: npm install marko</h3>
+
+        </div>
+    </div>
+    <div class="botones-container">
+        <!-- Sección de la tabla de cuadrados y cubos -->
+        <h4>Tabla de cuadrados y cubos</h4>
+        <button onclick="generarTabla()">Generar Tabla</button>
+        <div id="resultado" style="margin-top: 10px;"></div>
+        
+        <!-- Sección del juego de suma -->
+        <h4>Función dos</h4>
+        <button onclick="correctoIncorrecto()">Iniciar Juego</button>
+        <div id="resultado2" style="margin-top: 10px;"></div>
+        
+        <!-- Sección de la función contar -->
+        <h4>Función contar</h4>
+        <button onclick="preContador()">Probar Contador</button>
+        <div id="resultado3" style="margin-top: 10px;"></div>
+        
+        <!-- Sección de la función promedio-->
+        <h4>Función promedio</h4>
+        <button onclick="prePromedio()">Sacar Promedio</button>
+        <div id="resultado4" style="margin-top: 10px;"></div>
+        
+        <!-- Sección de la función invertir-->
+        <h4>Función invertir</h4>
+        <button onclick="invertir()">Invertir Numero</button>
+        <div id="resultado5" style="margin-top: 10px;"></div>
+        
+        
+        <!-- Sección de la función del insiso 6-->
+        <h4>Mejor Tuner para Thunder dragon</h4>
+        <button onclick="soporteThunder.veroportenombreyconseguir()">Mostrar Datos</button>
+        <div id="resultado7" style="margin-top: 10px;"></div>
+        <button onclick="soporteThunder.modsoportenombre()">Modificar Nombre</button>
+        <div id="resultado6" style="margin-top: 10px;"></div>
+        <button onclick="soporteThunder.modconseguir()">Modificar donde se obtiene</button>
+        <div id="resultado8" style="margin-top: 10px;"></div>
+        <%- include('includes/navbar') %>     <!-- Se incluye la barra de navegación -->
+
+
+    <%- include('includes/footer') %>  <!-- Se incluye el footer -->
+
+</body>
+</html>

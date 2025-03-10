@@ -5,6 +5,9 @@ const bodyParser = require('body-parser'); // Usamos body-parser para manejar fo
 
 const app = express();
 
+//EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'paguinas')); 
 
 // Usamos middleware para procesar datos del cuerpo de la solicitud (formulario)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const misRutas = require('./rutas');
 
 // Servir archivos estáticos (CSS, imágenes, JS) desde la raíz del proyecto
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 //  Ruta para procesar formulario y guardar datos en datos.yxy
 app.post('/submit', function(req, res) {
