@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const misRutas = require('./rutas');
 
 // Servir archivos estáticos (CSS, imágenes, JS) desde la raíz del proyecto
-app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 //  Ruta para procesar formulario y guardar datos en datos.yxy
 app.post('/submit', function(req, res) {
