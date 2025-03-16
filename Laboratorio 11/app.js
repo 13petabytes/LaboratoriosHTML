@@ -68,10 +68,16 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+<<<<<<< HEAD
 // Servir archivos estáticos (CSS, imágenes, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Importar rutas
+=======
+// Servir archivos estáticos (CSS, imágenes, JS) desde la raíz del proyecto
+
+app.use(express.static(path.join(__dirname, 'public')));
+>>>>>>> lab13
 
 const misRutas = require('./routes/rutas');
 
