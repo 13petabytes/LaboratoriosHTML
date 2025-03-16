@@ -1,44 +1,87 @@
-const express = require('express'); 
+// Laboratorio 13
+
+const express = require('express');
+const app = express();
+
 const path = require('path');
-const fs = require('fs'); // Añadimos fs para trabajar con archivos
-const bodyParser = require('body-parser'); // Usamos body-parser para manejar formularios POST
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'paguinas'));
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+
+//Middleware
+app.use((request, response, next) => {
+    console.log('Middleware!');
+
+    //Le permite a la petición avanzar hacia el siguiente middleware
+    next(); 
+});
+
+//Este middleware se registra sólo en la ruta /chewy
+app.use('/chewy', (request, response, next) => {
+    response.send("Hola desde la ruta /chewy");
+});
+
+const rutasDuelistas = require('./routes/duelistas.rutas');
+
+app.use(rutasDuelistas);
+
+app.use((request, response, next) => {
+    console.log('Otro middleware!');
+    
+     //Manda la respuesta
+     response.send('Hola duelista'); 
+});
+
+app.use((req, res) => {
+    res.status(404).render('Error 404', { titulo: 'Página No Encontrada' });
+});
+
+
+app.listen(3000);
+
+
+/* Laboratorio 12
+const express = require('express');
+const path = require('path');
+const fs = require('fs'); 
+const bodyParser = require('body-parser'); 
+const session = require('express-session');
 
 const app = express();
 
-//EJS
+// Configurar EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'paguinas')); 
+app.set('views', path.join(__dirname, 'paguinas'));
 
-// Usamos middleware para procesar datos del cuerpo de la solicitud (formulario)
+// Middleware para procesar datos del formulario
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Importamos las rutas desde el archivo rutas.js
-const misRutas = require('./rutas');
+// Configuración de sesión (DEBE IR ANTES DE IMPORTAR LAS RUTAS)
+app.use(session({
+    secret: 'secreto',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
-// Servir archivos estáticos (CSS, imágenes, JS) desde la raíz del proyecto
+// Servir archivos estáticos (CSS, imágenes, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Importar rutas
 
-//  Ruta para procesar formulario y guardar datos en datos.yxy
-app.post('/submit', function(req, res) {
-    const password = req.body.password || "Contraseña no recibida";
+const misRutas = require('./routes/rutas');
 
-    // Guardamos los datos en 'datos.txt'
-    fs.appendFile('datos.txt', `Contraseña recibida: ${password}\n`, function(err) {
-        if (err) {
-            res.status(500).send('Error al guardar los datos.');
-        } else {
-            res.status(200).send('<h1>Datos recibidos y guardados</h1><a href="/">Volver</a>');
-        }
-    });
-});
+// Usar las rutas importadas
 
-// Usamos las rutas definidas en rutas.js
 app.use(misRutas);
 
 
-
-// Configuración del servidor
+// Iniciar el servidor
 app.listen(3000, function () {
     console.log('Servidor ejecutándose en http://localhost:3000');
 });
+*/

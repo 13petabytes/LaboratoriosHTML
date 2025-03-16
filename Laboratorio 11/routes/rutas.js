@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 
-
-// Página de inicio
+//login
 router.get('/', (req, res) => {
-    res.render('index', { titulo: 'Página Principal' });
+    res.render('index', { titulo: 'Inicio' });
 });
+
 
 // Página Lab5
 router.get('/lab5', (req, res) => {
@@ -31,5 +31,7 @@ router.get('/Ciceron', (req, res) => {
 router.use((req, res) => {
     res.status(404).render('Error 404', { titulo: 'Página No Encontrada' });
 });
+
+
 
 module.exports = router;

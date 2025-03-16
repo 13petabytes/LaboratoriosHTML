@@ -1,0 +1,41 @@
+Ejercicio: SQL con Funciones Agregadas
+
+-- 1. Ingreso total recibido por cada actor, sin importar en cuántas películas haya participado.
+SELECT 
+    e.nombre AS "Actor",
+    SUM(e.sueldo) AS "Ingreso Total"
+FROM Elenco e
+GROUP BY e.nombre;
+
+-- 2. Monto total destinado a películas por cada Estudio Cinematográfico durante la década de los 80's.
+SELECT 
+    p.nomestudio AS "Estudio",
+    SUM(p.presupuesto) AS "Presupuesto Total"
+FROM Película p
+WHERE p.año BETWEEN 1980 AND 1989
+GROUP BY p.nomestudio;
+
+-- 3. Nombre y sueldo promedio de los actores (solo hombres) que reciben en promedio un pago superior a 5 millones de dólares por película.
+SELECT 
+    a.nombre AS "Actor",
+    AVG(e.sueldo) AS "Sueldo Promedio"
+FROM Elenco e
+JOIN Actor a ON e.nombre = a.nombre
+WHERE a.sexo = 'M'
+GROUP BY a.nombre
+HAVING AVG(e.sueldo) > 5000000;
+
+-- 4. Título y año de producción de las películas con menor presupuesto.
+SELECT 
+    p.título AS "Título",
+    p.año AS "Año de Producción"
+FROM Película p
+WHERE p.presupuesto = (SELECT MIN(presupuesto) FROM Película);
+
+-- 5. Mostrar el sueldo de la actriz mejor pagada.
+SELECT 
+    e.nombre AS "Actriz",
+    MAX(e.sueldo) AS "Sueldo Máximo"
+FROM Elenco e
+JOIN Actor a ON e.nombre = a.nombre
+WHERE a.sexo = 'F';
