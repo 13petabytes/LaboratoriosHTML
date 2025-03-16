@@ -91,3 +91,8 @@ button {
     cursor: pointer;
 }
 
+
+.links {
+    padding-top: 30px;   /* Espacio arriba */
+    padding-bottom: 30px; /* Espacio abajo */
+}

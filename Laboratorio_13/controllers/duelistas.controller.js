@@ -20,7 +20,6 @@ exports.get_lista = (request, response, next) => {
         duelistas: Duelista.fetchAll(),
     });
 };
-
 // Muestra la página de inicio
 exports.get_mostrar = (request, response, next) => {
     const path = require('path');
