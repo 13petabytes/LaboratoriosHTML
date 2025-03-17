@@ -1,27 +1,33 @@
-const duelistas = [
-    {nombre: 'Yugi Muto', url: 'https://yugioh.fandom.com/es/wiki/Yugi_Muto_(Duel_Links)'},
-    {nombre: 'Seto Kaiba', url: 'https://yugioh.fandom.com/es/wiki/Seto_Kaiba_LOSD_(Duel_Links)'},
-    {nombre: 'Joey Wheeler', url: 'https://yugioh.fandom.com/es/wiki/Joey_Wheeler_(Duel_Links)'},
-    {nombre: 'Mai Valentine', url: 'https://yugioh.fandom.com/es/wiki/Mai_Valentine_(Duel_Links)'},
-];
+const db = require('../util/database');
 
-module.exports = class Duelista {
+module.exports = class duelistas {
 
-    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
-    constructor(mi_nombre, mi_url) {
+    // Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
+    constructor(mi_nombre, mi_serie) {
         this.nombre = mi_nombre;
-        this.url = mi_url;
+        this.serie = mi_serie; // Se añadió la serie a la propiedad
     }
 
-    //Este método servirá para guardar de manera persistente el nuevo objeto. 
+    // Este método servirá para guardar de manera persistente el nuevo objeto
     save() {
-        duelistas.push(this);
-        return this
+        return db.execute('INSERT INTO personajes (nombre, serie) VALUES (?, ?)', [this.nombre, this.serie]);
     }
 
-    //Este método servirá para devolver los objetos del almacenamiento persistente.
+    // Este método servirá para devolver los objetos del almacenamiento persistente
     static fetchAll() {
-        return duelistas;
+        return db.execute('SELECT * FROM personajes');
+    }
+
+    static fetchOne(id) {
+        return db.execute('SELECT * FROM personajes WHERE id=?', [id]);
+    }
+
+    static fetch(id) {
+        if (id) {
+            return this.fetchOne(id);
+        } else {
+            return this.fetchAll();
+        }
     }
 
 }
