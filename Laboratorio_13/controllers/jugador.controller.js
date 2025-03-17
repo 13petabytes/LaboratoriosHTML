@@ -1,63 +1,48 @@
-const Jugador = require('../models/jugador.model');
-const bcrypt = require('bcryptjs');
+// controllers/jugador.controller.js
+const db = require('../db/dbConnection');
+const bcrypt = require('bcrypt'); // Usamos bcrypt para comparar contraseñas
 
-exports.get_signup = (request, response, next) => {
-    response.render('login.ejs', {
-        isLoggedIn: request.session.isLoggedIn || false,
-        nombre: request.session.nombre || '', // Se cambió 'username' a 'nombre'
-        isNew: true,
-        csrfToken: request.csrfToken(),
+// Ruta para mostrar el formulario de login
+const get_login = (req, res) => {
+    res.render('login'); // Asegúrate de tener una vista 'login.ejs'
+};
+
+// Ruta para manejar el login
+const post_login = async (req, res) => {
+    const { nombre, contrasenia } = req.body;
+
+    // Consulta para encontrar el jugador por nombre
+    const [jugador] = await db.promise().query('SELECT * FROM Jugadores WHERE nombre = ?', [nombre]);
+
+    if (!jugador) {
+        return res.status(401).render('login', { error: 'Jugador no encontrado' });
+    }
+
+    // Compara la contraseña ingresada con la almacenada en la base de datos
+    const esValida = await bcrypt.compare(contrasenia, jugador.contrasenia);
+    
+    if (!esValida) {
+        return res.status(401).render('login', { error: 'Contraseña incorrecta' });
+    }
+
+    // Establecer la sesión del jugador
+    req.session.jugador = jugador.id;  // Guardar ID del jugador en la sesión
+    req.session.jugadorNombre = jugador.nombre;  // Guardar nombre del jugador en la sesión
+    req.session.isLoggedIn = true;  // Marcar que el jugador está logueado
+
+    // Redirigir a la página principal o al dashboard del jugador
+    res.redirect('/jugador/dashboard');  // Ajusta la ruta según sea necesario
+};
+
+// Ruta para manejar el logout
+const get_logout = (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/jugador/login');  // Redirigir al login después de hacer logout
     });
 };
 
-exports.post_signup = (request, response, next) => {
-    const nuevo_jugador = new Jugador(request.body.nombre, request.body.contrasenia);
-
-    nuevo_jugador.save().then(() => {
-        response.redirect('/jugador/login');
-    }).catch((error) => {
-        console.log(error);
-    });
-};
-
-exports.get_login = (request, response, next) => {
-    response.render('login.ejs', {
-        isLoggedIn: request.session.isLoggedIn || false,
-        nombre: request.session.nombre || '',  // Se cambió 'username' a 'nombre'
-        isNew: false,
-        csrfToken: request.csrfToken(), // Incluir el CSRF token en el renderizado
-    });
-};
-
-exports.post_login = (request, response, next) => {
-    Jugador.fetchOne(request.body.nombre).then(([rows, fieldData]) => {
-        if (rows.length > 0) {
-            bcrypt.compare(request.body.contrasenia, rows[0].contrasenia)
-                .then((doMatch) => {
-                    if (doMatch) {
-                        request.session.nombre = rows[0].nombre; // Guardamos el nombre del jugador
-                        request.session.isLoggedIn = true;
-                        return request.session.save(err => {
-                            response.redirect('/duelistas');
-                        });
-                    } else {
-                        response.redirect('/jugador/login');
-                    }
-                }).catch((error) => {
-                    console.log(error);
-                });
-        } else {
-            response.redirect('/jugador/login');
-        }
-    }).catch((error) => {
-        console.log(error);
-    });
-};
-
-
-exports.get_logout = (request, response, next) => {
-    request.session.destroy(() => {
-        // Este código se ejecuta cuando la sesión se elimina
-        response.redirect('/jugador/login');
-    });
+module.exports = {
+    get_login,
+    post_login,
+    get_logout
 };

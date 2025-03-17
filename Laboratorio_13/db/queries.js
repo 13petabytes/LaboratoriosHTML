@@ -1,9 +1,5 @@
-module.exports = (request, response, next) => {
-    if (!request.session.isLoggedIn) {
-        return response.redirect('/jugador/login');
-    }
-    next();    
-};
+// db/queries.js
+const db = require('./dbConnection'); // Asegúrate de tener la conexión a la base de datos
 
 const obtenerPermisos = async (jugadorId) => {
     const permisos = await db.query(`
@@ -14,3 +10,5 @@ const obtenerPermisos = async (jugadorId) => {
     
     return permisos.map(p => p.nombre);
 };
+
+module.exports = { obtenerPermisos };

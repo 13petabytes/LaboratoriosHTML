@@ -1,26 +1,29 @@
 <div class="columns">
-    <div class="column">
+  <div class="column">
       <form action="/jugador/login" method="POST">
-        <label for="username" class="label">Jugador</label>
-        <input
-          class="input is-primary"
-          type="text"
-          placeholder="cheewbaca"
-          id="username"
-          name="username"
-          required
-        />
-        <br><br>
-        <label for="password" class="label">Password</label>
-        <input
-          class="input is-primary"
-          type="password"
-          id="password"
-          name="password"
-          required
-        />
-        <br><br>
-        <input type="submit" id="boton_login" class="button is-primary" value="Entrar">
+          <!-- Campo CSRF -->
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          
+          <label for="username" class="label">Jugador</label>
+          <input
+              class="input is-primary"
+              type="text"
+              placeholder="cheewbaca"
+              id="username"
+              name="username"
+              required
+          />
+          <br><br>
+          <label for="password" class="label">Password</label>
+          <input
+              class="input is-primary"
+              type="password"
+              id="password"
+              name="password"
+              required
+          />
+          <br><br>
+          <input type="submit" id="boton_login" class="button is-primary" value="Entrar">
       </form>
-    </div>
+  </div>
 </div>
