@@ -12,10 +12,6 @@ router.post('/agregar', duelistas_controller.post_agregar);
 // Ruta para mostrar la lista de duelistas
 router.get('/mostrar', duelistas_controller.get_mostrar);
 
-// Ruta para mostrar la lista de duelistas
-router.get('/preguntas', duelistas_controller.get_preguntas);
-
-
 // Ruta para la lista de duelistas en la página principal
 router.get('/', duelistas_controller.get_lista);
 
