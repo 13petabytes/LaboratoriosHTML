@@ -1,0 +1,22 @@
+<%- include('includes/_header.ejs') %>
+
+<a class="button is-primary" href="/duelistas/agregar">
+    Agregar duelista
+</a>
+
+<br><br>
+
+<% for (let duelista of duelistas) { %>
+    <div class="card">
+        <div class="card-content">
+            <p class="title">
+                <%= duelista.nombre %>
+            </p>
+        </div>
+    </div>
+<% } %>
+
+<br><br>
+
+
+<%- include('includes/_footer.ejs') %>
