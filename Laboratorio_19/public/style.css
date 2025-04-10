@@ -1,0 +1,103 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+body {
+    font-family: "Lucida Console", "Courier New", monospace;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+header, footer {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+}
+
+#displayText {
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #007BFF;
+}
+
+#password-requirements {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+#password-requirements li {
+    color: red;
+}
+
+#password-requirements li.valid {
+    color: green;
+}
+
+#match-message {
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.links {
+    padding-top: 30px;   /* Espacio arriba */
+    padding-bottom: 30px; /* Espacio abajo */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
