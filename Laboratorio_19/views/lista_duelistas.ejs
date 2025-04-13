@@ -1,22 +1,58 @@
 <%- include('includes/_header.ejs') %>
 
-<a class="button is-primary" href="/duelistas/agregar">
-    Agregar duelista
-</a>
-
-<br><br>
-
-<% for (let duelista of duelistas) { %>
-    <div class="card">
-        <div class="card-content">
-            <p class="title">
-                <%= duelista.nombre %>
-            </p>
-        </div>
+<% if(info != '') { %>
+    <div class="notification is-info">
+        <%= info %>
     </div>
+<% } %>
+
+<% for(let privilegio of privilegios) { %> 
+    <% if(privilegio.nombre == "creador") { %>
+        <a class="button is-primary" href="/duelistas/agregar">
+            Agregar duelista
+        </a>
+    <% } %>
 <% } %>
 
 <br><br>
 
+<div class="columns is-multiline is-centered">
+<% for (let duelista of duelistas) { %>
+    <div class="column is-one-sixth">
+        <div class="card has-text-centered">
+            <div class="card-image pt-4">
+                <figure class="image is-128x128 is-inline-block">
+                    <% if (duelista.imagen) { %>
+                        <img
+                            src="data:image/jpeg;base64,<%= duelista.imagen.toString('base64') %>"
+                            alt="Foto de <%= duelista.nombre %>"
+                        />
+                    <% } else { %>
+                        <img
+                            src="/images/default.jpg"
+                            alt="Imagen no disponible"
+                        />
+                    <% } %>
+                </figure>
+            </div>
+            <div class="card-content has-text-centered">
+                <p class="title is-6">
+                    <a href="/duelistas/<%= duelista.id %>"><%= duelista.nombre %></a>
+                </p>
+            </div>
+        </div>
+    </div>
+<% } %>
+</div>
+
+<br><br>
+
+<% for(let privilegio of privilegios) { %> 
+    <% if(privilegio.nombre == "crear duelistas") { %>
+        <a class="button is-primary" href="/duelistas/agregar">
+            Agregar duelista
+        </a>
+    <% } %>
+<% } %>
 
 <%- include('includes/_footer.ejs') %>
