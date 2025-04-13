@@ -2,31 +2,38 @@ const db = require('../util/database');
 
 module.exports = class Duelista {
 
-    // Constructor de la clase. Sirve para crear un nuevo objeto y en él se definen las propiedades del modelo
+    // Constructor para crear un nuevo duelista
     constructor(nombre, imagen) {
         this.nombre = nombre;
         this.imagen = imagen;
     }
 
-    // Método para guardar el nuevo objeto de manera persistente
+    // Guarda el duelista en la base de datos
     save() {
         return db.execute(
-            'INSERT INTO duelistas(nombre, imagen) VALUES (?, ?)', 
+            'INSERT INTO duelistas (nombre, imagen) VALUES (?, ?)', 
             [this.nombre, this.imagen]
         );
     }
 
-    // Método para devolver todos los objetos desde el almacenamiento persistente
+    // Devuelve todos los duelistas
     static fetchAll() {
-        return db.execute('SELECT * FROM duelistas');
+        return db.execute(`
+            SELECT * 
+            FROM duelistas
+        `);
     }
 
-    // Método para devolver un solo objeto basado en el id
+    // Devuelve un duelista específico por ID
     static fetchOne(id) {
-        return db.execute('SELECT * FROM duelistas WHERE id=?', [id]);
+        return db.execute(`
+            SELECT * 
+            FROM duelistas 
+            WHERE id = ?
+        `, [id]);
     }
 
-    // Método estático para decidir si devolver todos los duelistas o uno solo, dependiendo de si se pasa un id
+    // Alias para fetchAll o fetchOne dependiendo si se pasa ID
     static fetch(id) {
         if (id) {
             return this.fetchOne(id);
@@ -34,4 +41,14 @@ module.exports = class Duelista {
             return this.fetchAll();
         }
     }
+
+    // Busca duelistas por nombre (LIKE)
+    static buscarPorNombre(valor) {
+        return db.execute(`
+            SELECT * 
+            FROM duelistas 
+            WHERE nombre LIKE ?
+        `, ['%' + valor + '%']);
+    }
+
 };

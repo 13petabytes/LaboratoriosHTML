@@ -6,6 +6,20 @@
     </div>
 <% } %>
 
+<!-- Barra de búsqueda centrada y con ancho ajustado -->
+<div class="has-text-centered">
+    <label for="buscar" class="label">Buscar</label>
+    <input
+        id="buscar"
+        name="buscar"
+        class="input is-info"
+        type="text"
+        placeholder="Yugi, Kaiba..."
+        style="width: 250px; display: inline-block;"
+    />
+</div>
+<br><br>
+
 <% for(let privilegio of privilegios) { %> 
     <% if(privilegio.nombre == "creador") { %>
         <a class="button is-primary" href="/duelistas/agregar">
@@ -16,43 +30,94 @@
 
 <br><br>
 
-<div class="columns is-multiline is-centered">
-<% for (let duelista of duelistas) { %>
-    <div class="column is-one-sixth">
-        <div class="card has-text-centered">
-            <div class="card-image pt-4">
-                <figure class="image is-128x128 is-inline-block">
-                    <% if (duelista.imagen) { %>
-                        <img
-                            src="data:image/jpeg;base64,<%= duelista.imagen.toString('base64') %>"
-                            alt="Foto de <%= duelista.nombre %>"
-                        />
-                    <% } else { %>
-                        <img
-                            src="/images/default.jpg"
-                            alt="Imagen no disponible"
-                        />
-                    <% } %>
-                </figure>
-            </div>
-            <div class="card-content has-text-centered">
-                <p class="title is-6">
-                    <a href="/duelistas/<%= duelista.id %>"><%= duelista.nombre %></a>
-                </p>
+<div id="container_tarjetas">
+    <div class="columns is-multiline is-centered">
+    <% for (let duelista of duelistas) { %>
+        <div class="column is-one-sixth">
+            <div class="card has-text-centered">
+                <div class="card-image pt-4">
+                    <figure class="image is-128x128 is-inline-block">
+                        <% if (duelista.imagen) { %>
+                            <img
+                                src="data:image/jpeg;base64,<%= duelista.imagen.toString('base64') %>"
+                                alt="Foto de <%= duelista.nombre %>"
+                            />
+                        <% } else { %>
+                            <img
+                                src="/images/default.jpg"
+                                alt="Imagen no disponible"
+                            />
+                        <% } %>
+                    </figure>
+                </div>
+                <div class="card-content has-text-centered">
+                    <p class="title is-6">
+                        <a href="/duelistas/<%= duelista.id %>"><%= duelista.nombre %></a>
+                    </p>
+                </div>
             </div>
         </div>
+    <% } %>
     </div>
-<% } %>
 </div>
 
 <br><br>
 
-<% for(let privilegio of privilegios) { %> 
-    <% if(privilegio.nombre == "crear duelistas") { %>
-        <a class="button is-primary" href="/duelistas/agregar">
-            Agregar duelista
-        </a>
-    <% } %>
-<% } %>
+<script>
+    const inputBuscar = document.getElementById("buscar");
+
+    // Para saber si alguna vez se escribió algo antes
+    let huboTextoAntes = false;
+
+    inputBuscar.onkeyup = () => {
+        const valor = inputBuscar.value.trim();
+
+        // Si antes había texto y ahora está vacío, recargar la página
+        if (huboTextoAntes && valor === "") {
+            location.reload();
+            return;
+        }
+
+        // Si hay texto ahora, marcar que sí se escribió algo antes
+        if (valor !== "") {
+            huboTextoAntes = true;
+        }
+
+        // Buscar normalmente
+        fetch("/duelistas/buscar/" + encodeURIComponent(valor))
+            .then(res => res.json())
+            .then(data => {
+                let html = `<div class="columns is-multiline is-centered">`;
+                for (let duelista of data.duelistas) {
+                    html += `
+                        <div class="column is-one-sixth">
+                            <div class="card has-text-centered">
+                                <div class="card-image pt-4">
+                                    <figure class="image is-128x128 is-inline-block">
+                                        <img
+                                            src="${duelista.imagen 
+                                                ? 'data:image/jpeg;base64,' + duelista.imagen 
+                                                : '/images/default.jpg'}"
+                                            alt="Foto de ${duelista.nombre}"
+                                        />
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-centered">
+                                    <p class="title is-6">
+                                        <a href="/duelistas/${duelista.id}">${duelista.nombre}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                html += `</div>`;
+                document.getElementById("container_tarjetas").innerHTML = html;
+            })
+            .catch(err => console.error('Error al buscar duelistas:', err));
+    };
+</script>
+
+
 
 <%- include('includes/_footer.ejs') %>

@@ -1,32 +1,33 @@
-const Duelista = require('../models/duelista.model');  // Ahora se importa el modelo Duelista
+const Duelista = require('../models/duelista.model');
+const fs = require('fs');
+const path = require('path');
 
-exports.get_agregar = (request, response, next) => {
-    response.render('agregar_duelista', {
-        isLoggedIn: request.session.isLoggedIn || false,
-        username: request.session.username || '',
-        csrfToken: request.csrfToken(), // Este token se pasa al formulario
+// Mostrar formulario para agregar un duelista
+exports.get_agregar = (req, res) => {
+    res.render('agregar_duelista', {
+        titulo: 'Agregar Duelista',
+        csrfToken: req.csrfToken(),
     });
 };
 
-exports.post_agregar = (request, response, next) => {
-    console.log(request.body);
-    console.log(request.file);
+// Guardar nuevo duelista
+exports.post_agregar = (req, res) => {
+    const nombre = req.body.nombre;
+    let imagen = null;
 
-    const duelista = new Duelista(
-        request.body.nombre, 
-        request.file ? request.file.filename : null
-    );
+    if (req.file) {
+        imagen = fs.readFileSync(path.join(__dirname, '..', 'public', 'uploads', req.file.filename));
+    }
 
+    const duelista = new Duelista(nombre, imagen);
     duelista.save()
         .then(() => {
-            request.session.info = `Duelista ${duelista.nombre} guardado.`;
-            response.redirect('/duelistas');
+            res.redirect('/agregar_duelista');
         })
-        .catch((error) => {
-            console.log(error);
-        });
+        .catch(err => console.log(err));
 };
 
+// Lista de duelistas
 exports.get_lista = (request, response, next) => { 
     const mensaje = request.session.info || '';
     if (request.session.info) {
@@ -50,7 +51,63 @@ exports.get_lista = (request, response, next) => {
         });
 };
 
-exports.get_mostrar = (request, response, next) => {
+// Ver detalles de un duelista por su ID
+exports.get_duelista = (req, res) => {
+    const id = req.params.id;
+    Duelista.fetch(id)
+        .then(([rows, fieldData]) => {
+            if (rows.length === 0) {
+                return res.status(404).send('Duelista no encontrado');
+            }
+
+            res.render('lista_duelistas', {
+                duelista: rows[0],
+                privilegios: req.session.privilegios || [],
+            });
+        })
+        .catch(err => console.log(err));
+};
+
+// Buscar duelista por nombre
+exports.get_buscar = (req, res) => {
+    const nombre = (req.params.nombre || '').trim(); // Asegura que siempre sea string
+
+    const procesarYEnviar = (rows) => {
+        const duelistasProcesados = rows.map(duelista => {
+            return {
+                ...duelista,
+                imagen: duelista.imagen
+                    ? Buffer.from(duelista.imagen).toString('base64')
+                    : null
+            };
+        });
+
+        res.json({ duelistas: duelistasProcesados });
+    };
+
+    if (nombre === "") {
+        // Si el nombre está vacío, traer todos los duelistas
+        Duelista.fetchAll()
+            .then(([rows]) => procesarYEnviar(rows))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Error al obtener todos los duelistas' });
+            });
+    } else {
+        // Si hay texto, buscar por nombre
+        Duelista.buscarPorNombre(nombre)
+            .then(([rows]) => procesarYEnviar(rows))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({ error: 'Error al buscar duelistas' });
+            });
+    }
+};
+
+
+
+// Redirigir a la vista principal de la página
+exports.get_mostrar = (req, res) => {
     const path = require('path');
-    response.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'views', 'index.html'));
 };
