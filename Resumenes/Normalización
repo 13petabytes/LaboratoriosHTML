@@ -1,0 +1,53 @@
+# Resumen: Normalización de Bases de Datos
+
+La **normalización** es un proceso fundamental en el diseño de bases de datos, cuyo objetivo es obtener estructuras estables, lógicas y libres de redundancias e inconsistencias. Ayuda a mantener un buen rendimiento, facilita modificaciones y evita anomalías en almacenamiento y mantenimiento.
+
+---
+
+## Razones para normalizar:
+- **Representar correctamente** las relaciones entre datos.
+- **Facilitar consultas** y generación de reportes.
+- **Simplificar actualizaciones, inserciones y eliminaciones.**
+- **Disminuir la necesidad de reorganizar** la base de datos ante nuevos requerimientos.
+
+---
+
+## Pasos generales de normalización:
+1. **Descomponer** los datos en registros bidimensionales.
+2. **Eliminar dependencias parciales** (relaciones que no dependen totalmente de la llave primaria).
+3. **Eliminar dependencias transitivas** (atributos que dependen indirectamente de la llave primaria).
+
+---
+
+## Formas normales:
+
+### 1. Primera Forma Normal (1FN):
+- Cada celda contiene un único valor **atómico**.
+- No se permiten **grupos repetidos** ni tipos mixtos de datos en columnas.
+- Las **filas** deben ser únicas.
+
+### 2. Segunda Forma Normal (2FN):
+- Cumple con **1FN**.
+- Todos los atributos que no son clave dependen **completamente** de la llave primaria.
+- **Elimina dependencias parciales.**
+
+### 3. Tercera Forma Normal (3FN):
+- Cumple con **2FN**.
+- No existen **dependencias transitivas** entre atributos no clave.
+
+### 4. Forma Normal de Boyce-Codd (BCNF):
+- Cada **determinante** (atributo que determina a otros) debe ser una **llave candidata**.
+- Es una versión más estricta de la **3FN**.
+
+### 5. Cuarta Forma Normal (4FN):
+- Elimina **dependencias multivaluadas** (cuando un atributo puede tener múltiples valores independientes de otro).
+- Una tabla con dependencias multivaluadas se divide en dos para evitar redundancias.
+
+### 6. Quinta Forma Normal (5FN):
+- Se refiere a la descomposición de tablas que no pueden recomponerse correctamente sin pérdida de información.
+- Elimina **dependencias de unión complejas**.
+
+---
+
+## Conclusión:
+La normalización es crucial para crear bases de datos eficientes, flexibles y libres de errores. A través de formas normales, se reduce la redundancia, se previenen anomalías y se garantiza la integridad de los datos.
