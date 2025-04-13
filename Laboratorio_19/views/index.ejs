@@ -1,0 +1,95 @@
+<%- include('includes/_header.ejs') %>
+<style>
+  img {
+    width: 25%; /* 3/4 del tamaño original */
+    height: auto; /* Mantiene la proporción */
+  }
+  .styled-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .styled-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+</style>
+
+<img src="Yu-Gi-Oh21_Duel_Links.jpg" alt="imagen inicio">
+
+<div>
+  <h2>Ventajas de escribir el código SQL únicamente en la capa del modelo</h2>
+  <h3>Mejor separación de responsabilidades</h3>
+  <p>El código SQL queda centralizado en el modelo, lo que permite que los controladores y vistas se centren en la lógica de presentación y negocio, respectivamente.</p>
+  <h3>Mantener la coherencia en la estructura de datos</h3>
+  <p>Al definir las consultas en el modelo, se garantiza que toda la aplicación interactúe de la misma manera con la base de datos.</p>
+  <h3>Mayor facilidad para modificar la base de datos</h3>
+  <p>Cualquier cambio en la estructura de las consultas solo debe hacerse en el modelo, lo que facilita su mantenimiento y mejora la escalabilidad del sistema.</p>
+  
+  <h2>¿Qué es SQL injection y cómo se puede prevenir?</h2>
+  <h3>Definición de SQL Injection</h3>
+  <p>SQL Injection es una técnica de ataque en la que un atacante inserta o "inyecta" código SQL malicioso en una consulta, lo que puede permitirle acceder, modificar o eliminar datos de la base de datos.</p>
+  <h3>Cómo prevenir SQL Injection</h3>
+  <p>Usando consultas preparadas, validación de entradas y ORMs que protegen contra inyecciones automáticamente.</p>
+
+  <h2>¿En qué consiste el control de acceso basado en roles (RBAC)?</h2>
+  <p>El Control de Acceso Basado en Roles (RBAC) es un modelo de seguridad que otorga permisos a los usuarios en función de los roles que tienen dentro del sistema. Los roles representan funciones dentro de una organización, y cada uno tiene permisos específicos asociados.</p>
+
+  <h3>Sistema que aplica RBAC: Microsoft Azure</h3>
+  <p>Azure utiliza RBAC para controlar el acceso a sus recursos. Se asignan roles como lector, colaborador o administrador a usuarios o grupos, cada uno con distintos niveles de permiso.</p>
+  <ul>
+    <li><strong>Ventajas:</strong> Escalable, fácil de administrar, buena trazabilidad de permisos.</li>
+    <li><strong>Desventajas:</strong> Configuración inicial compleja, errores de asignación pueden ser peligrosos.</li>
+  </ul>
+
+  <h3>Sistema que no aplica RBAC: Archivos compartidos en red local</h3>
+  <p>En una red local, los permisos se asignan directamente a cada usuario sobre cada archivo o carpeta, sin roles intermedios.</p>
+  <ul>
+    <li><strong>Ventajas:</strong> Sencillo de implementar en redes pequeñas, control muy específico.</li>
+    <li><strong>Desventajas:</strong> Difícil de escalar, mantenimiento complicado, mayor riesgo de errores.</li>
+  </ul>
+
+  <h3>Análisis comparativo</h3>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Aspecto</th>
+        <th>Con RBAC (Azure)</th>
+        <th>Sin RBAC (Red local)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Facilidad de gestión</td>
+        <td>Alta</td>
+        <td>Baja</td>
+      </tr>
+      <tr>
+        <td>Escalabilidad</td>
+        <td>Alta</td>
+        <td>Baja</td>
+      </tr>
+      <tr>
+        <td>Seguridad</td>
+        <td>Estructurada y predecible</td>
+        <td>Dependiente del usuario</td>
+      </tr>
+      <tr>
+        <td>Flexibilidad</td>
+        <td>Menor personalización individual</td>
+        <td>Alta personalización</td>
+      </tr>
+      <tr>
+        <td>Auditoría</td>
+        <td>Clara y centralizada</td>
+        <td>Difícil de rastrear</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<%- include('includes/_footer.ejs') %>
+<script src="./public/introjs.js"></script>

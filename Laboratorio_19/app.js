@@ -42,6 +42,8 @@ const rutasDuelistas = require('./routes/duelistas.routes');
 app.use('/jugador', rutasJugadores);
 app.use('/duelistas', rutasDuelistas);
 
+
+
 // Error 404
 app.use((req, res, next) => {
     res.status(404).render('Error 404', { message: 'Página no encontrada' });

@@ -1,41 +1,167 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Error 404</title>
-        <style>
-            @font-face {
-                font-family: 'Squealer';
-                src: url('squealer.regular.ttf') format('truetype'); 
-                font-weight: normal;
-                font-style: normal;
-            }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 404</title>
+  <style>
+    @font-face {
+      font-family: 'Squealer';
+      src: url('squealer.regular.ttf') format('truetype'); 
+      font-weight: normal;
+      font-style: normal;
+    }
 
-            body {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                text-align: center;
-                font-family: 'Squealer';
-                font-size: 2em;
-                margin: 0;
-            }
+    * {
+      scroll-behavior: smooth;
+    }
 
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        </style>
-    </head>    
-    <body>
-        <h1><strong>Error 404</strong></h1>
-        <h1><strong>Página No Encontrada</strong></h1>
-        
-        <img src="Yamiyugitriste.jpg" alt="imagen de error">
+    body {
+      margin: 0;
+      font-family: 'Squealer', sans-serif;
+    }
 
-        <a href="/jugador/login" class="hover:text-blue-500">Regresa al Login</a>
-    </body>
+    .section-404 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      font-size: 2em;
+      background-color: #f5f5f5;
+    }
+
+    .section-404 img {
+      max-width: 100%;
+      height: auto;
+      margin: 20px 0;
+    }
+
+    .scroll-down {
+      margin-top: 30px;
+      font-size: 0.5em;
+      color: #555;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      text-decoration: underline;
+    }
+
+    #contenido {
+      padding: 40px;
+      background-color: white;
+    }
+
+    .styled-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .styled-table th,
+    .styled-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .styled-table th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+
+  </style>
+</head>
+<body>
+
+  <section class="section-404">
+    <h1><strong>Error 404</strong></h1>
+    <h1><strong>Página No Encontrada</strong></h1>
+    
+    <img src="Yamiyugitriste.jpg" alt="imagen de error">
+
+    <a href="/jugador/login" class="hover:text-blue-500">Regresa al Login</a>
+
+    <button onclick="document.getElementById('contenido').scrollIntoView()" class="scroll-down">
+      Preguntas abajo ⬇
+    </button>
+  </section>
+
+  <div id="contenido">
+    <h2>Ventajas de escribir el código SQL únicamente en la capa del modelo</h2>
+    <h3>Mejor separación de responsabilidades</h3>
+    <p>El código SQL queda centralizado en el modelo...</p>
+
+    <h3>Mantener la coherencia en la estructura de datos</h3>
+    <p>Al definir las consultas en el modelo...</p>
+
+    <h3>Mayor facilidad para modificar la base de datos</h3>
+    <p>Cualquier cambio en la estructura...</p>
+
+    <h2>¿Qué es SQL injection y cómo se puede prevenir?</h2>
+    <h3>Definición de SQL Injection</h3>
+    <p>SQL Injection es una técnica de ataque...</p>
+
+    <h3>Cómo prevenir SQL Injection</h3>
+    <p>Usando consultas preparadas...</p>
+
+    <h2>¿En qué consiste el control de acceso basado en roles (RBAC)?</h2>
+    <p>RBAC es un modelo de seguridad...</p>
+
+    <h3>Sistema que aplica RBAC: Microsoft Azure</h3>
+    <p>Azure utiliza RBAC para controlar el acceso...</p>
+
+    <ul>
+      <li><strong>Ventajas:</strong> Escalable, fácil de administrar, buena trazabilidad de permisos.</li>
+      <li><strong>Desventajas:</strong> Configuración inicial compleja...</li>
+    </ul>
+
+    <h3>Sistema que no aplica RBAC: Archivos compartidos en red local</h3>
+    <p>En una red local, los permisos se asignan directamente...</p>
+
+    <ul>
+      <li><strong>Ventajas:</strong> Sencillo de implementar...</li>
+      <li><strong>Desventajas:</strong> Difícil de escalar...</li>
+    </ul>
+
+    <h3>Análisis comparativo</h3>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Aspecto</th>
+          <th>Con RBAC (Azure)</th>
+          <th>Sin RBAC (Red local)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Facilidad de gestión</td>
+          <td>Alta</td>
+          <td>Baja</td>
+        </tr>
+        <tr>
+          <td>Escalabilidad</td>
+          <td>Alta</td>
+          <td>Baja</td>
+        </tr>
+        <tr>
+          <td>Seguridad</td>
+          <td>Estructurada y predecible</td>
+          <td>Dependiente del usuario</td>
+        </tr>
+        <tr>
+          <td>Flexibilidad</td>
+          <td>Menor personalización individual</td>
+          <td>Alta personalización</td>
+        </tr>
+        <tr>
+          <td>Auditoría</td>
+          <td>Clara y centralizada</td>
+          <td>Difícil de rastrear</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
 </html>

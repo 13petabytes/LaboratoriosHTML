@@ -54,8 +54,10 @@ CREATE TABLE `duelistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `imagen` mediumblob DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
+
 
 -- Poblar tabla privilegios
 INSERT INTO `privilegios` (`id`, `nombre`, `created_at`) VALUES
