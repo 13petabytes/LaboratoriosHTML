@@ -1,0 +1,59 @@
+# Generación de Casos de Prueba a partir de Casos de Uso
+
+## Introducción
+
+Las pruebas de software pueden representar entre 30% y 50% del costo total del desarrollo. A pesar de esto, frecuentemente no se prueban adecuadamente. Esto se debe principalmente a dos factores:
+
+1. Las pruebas de software son difíciles de realizar correctamente.
+2. Se realizan sin una metodología clara y estructurada.
+
+Una práctica recomendada en la industria es comenzar las pruebas lo más temprano posible en el ciclo de desarrollo, evitando el riesgo de encontrar errores graves en etapas finales.
+
+## Objetivo
+
+El propósito es mostrar cómo los casos de uso pueden utilizarse para generar casos de prueba, permitiendo iniciar el proceso de pruebas desde etapas tempranas del desarrollo, y mejorando tanto la cobertura como la calidad del software.
+
+## Casos de Uso
+
+Un caso de uso describe una secuencia de acciones que proporciona un resultado valioso a un actor. Incluye:
+
+- Nombre
+- Descripción breve
+- Flujo de eventos (flujo básico y alternativos)
+- Requisitos especiales
+- Precondiciones
+- Postcondiciones
+
+El flujo de eventos es el componente más relevante para la generación de casos de prueba. El flujo básico cubre el comportamiento "normal", y los flujos alternativos representan excepciones, errores o rutas opcionales.
+
+## Ejemplo: Registro de Cursos
+
+Caso de uso: Registro de cursos en una universidad. Incluye los siguientes pasos:
+
+1. Logon
+2. Seleccionar "Crear horario"
+3. Obtener información de cursos
+4. Seleccionar cursos
+5. Enviar horario
+6. Mostrar horario completo
+
+Flujos alternativos incluyen errores de autenticación, sistema no disponible, prerequisitos no cumplidos, curso lleno, conflicto de horario, y registro cerrado.
+
+## Escenarios de Casos de Uso
+
+Un escenario es un camino completo a través de un caso de uso, combinando flujos básicos y alternativos. Cada combinación representa un escenario diferente que puede ser convertido en un caso de prueba.
+
+## Proceso para Generar Casos de Prueba
+
+1. Generar escenarios: identificar todas las combinaciones posibles entre flujos básicos y alternativos.
+2. Identificar casos de prueba: crear al menos un caso de prueba por escenario. Es recomendable considerar casos positivos y negativos, además de condiciones límite.
+3. Asignar datos de prueba: definir valores específicos para ejecutar cada prueba. Esto convierte los casos de prueba en procedimientos ejecutables.
+
+Se recomienda utilizar matrices para organizar los casos, las condiciones y los resultados esperados. Las celdas pueden contener indicadores como:
+
+- V: valor válido
+- I: valor inválido
+- N/A: no aplica
+
+Posteriormente se sustituyen estos indicadores por datos reales.
+
