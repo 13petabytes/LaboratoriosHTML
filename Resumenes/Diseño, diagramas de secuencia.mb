@@ -1,0 +1,93 @@
+# Introducción al Diseño de Software  
+## Diagramas de Secuencia con UML
+
+---
+
+## Términos y conceptos
+
+- **Diagrama de interacción**: Muestra objetos, relaciones y mensajes entre ellos.
+  - **Diagrama de secuencia**: Enfatiza la temporalidad.
+  - **Diagrama de colaboración**: Enfatiza la estructura (nodos y arcos).
+
+---
+
+## Diagramas de comportamiento: Diagramas de secuencia
+
+- Modelan la **interacción entre objetos** a lo largo del tiempo.
+- También conocidos como:
+  - "sequence diagram"
+  - "event-trace diagrams"
+  - "event scenarios"
+- Dos dimensiones:
+  - **Temporal** (vertical)
+  - **Instancias** (horizontal)
+
+---
+
+## Utilidad
+
+- Representan la interacción de objetos en un caso de uso.
+- Complementan a los diagramas de casos de uso, mostrando:
+  - Objetos y clases involucradas
+  - Mensajes intercambiados
+- Usados para describir **métodos específicos** de una clase.
+
+---
+
+## Elementos clave
+
+- **Línea de vida**: Línea discontinua vertical que representa la existencia de un objeto.
+- **Foco de control**: Rectángulo delgado que indica cuando un objeto está ejecutando una acción.
+
+---
+
+## Representación de acciones
+
+- Creación: `<<create>>`
+- Destrucción: `<<destroy>>`
+
+---
+
+## Tipos de flujo de control (Mensajes)
+
+- **Síncrono**:
+  - Llamada a método, el emisor se bloquea.
+  - Flecha con cabeza llena.
+- **Asíncrono**:
+  - No bloquea al emisor, crea nuevo hilo.
+  - Flecha con cabeza abierta.
+- **Retorno**:
+  - Respuesta representada con flecha discontinua.
+  - Puede omitirse si es evidente.
+
+---
+
+## Formas de uso
+
+- **Instancia**:
+  - Representa un escenario específico (instancia de ejecución).
+- **Genérico**:
+  - Describe toda la interacción para un caso de uso.
+  - Usa ramas, condiciones y bucles.
+
+---
+
+## Fragmentos combinados (Operadores)
+
+- Representan secuencias ejecutadas bajo condiciones específicas.
+- **alt (alternativa)**: if…then…else
+- **opt (opción)**: como `alt`, pero con un solo fragmento (switch)
+- **loop (bucle)**: se repite mientras se cumpla una condición
+
+---
+
+## Otros operadores
+
+- **sd (sequence diagram)**: marco que rodea un diagrama de secuencia.
+- **ref (referencia)**:
+  - Hace referencia a otra interacción definida en otro diagrama.
+  - Puede incluir parámetros y valores de retorno.
+- **par (paralelo)**: los fragmentos se ejecutan en paralelo.
+- **critical (región crítica)**: solo un proceso puede ejecutarse a la vez.
+
+---
